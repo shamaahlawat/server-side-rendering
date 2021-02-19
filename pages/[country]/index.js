@@ -3,13 +3,15 @@ import Thumbnail from '../../components/Thumbnail'
 // import {useEffect} from 'react';
 import Link from 'next/link'
 
-const CountryTest = ({shows}) => {
+const CountryTest = ({shows,country}) => {
     // console.log('propssss',props.shows)
 
     const renderShows = () => {
         return shows.map((show,index) => {
             return(
-                <li key={index}><Thumbnail imageUrl={show.image && show.image.medium} caption={show.name} /></li>
+                <li key={index}><Thumbnail imageUrl={show.image && show.image.medium} caption={show.name}
+                href="/[country]/[showId]"
+                as={`/${country}/${show.id}`} /></li>
             )
         })
     }
@@ -34,7 +36,8 @@ CountryTest.getInitialProps = async (context) => { //its happening on server sid
     const response = await axios.get(`http://api.tvmaze.com/schedule?country=${country}&date=2014-12-01`)
     // .then(response => console.log(response.data))
     return {
-        shows:response.data
+        shows:response.data,
+        country
     }
 }
 
