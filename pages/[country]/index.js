@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Thumbnail from '../../components/Thumbnail'
 // import {useEffect} from 'react';
+import Link from 'next/link'
 
 const CountryTest = ({shows}) => {
     // console.log('propssss',props.shows)
@@ -8,7 +9,7 @@ const CountryTest = ({shows}) => {
     const renderShows = () => {
         return shows.map((show,index) => {
             return(
-                <li key={index}><Thumbnail imageUrl={show.image} caption={show.name} /></li>
+                <li key={index}><Thumbnail imageUrl={show.image && show.image.medium} caption={show.name} /></li>
             )
         })
     }
@@ -19,7 +20,11 @@ const CountryTest = ({shows}) => {
 
 
 return (
-    <ul className="tvshows">{renderShows()}</ul>
+    <ul className="tvshows">
+    {/* <Link href="/about">
+       <a>About</a>
+    </Link> */}
+    {renderShows()}</ul>
 )
 }
 
