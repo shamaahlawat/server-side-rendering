@@ -1,5 +1,6 @@
 import axios from 'axios';
-import {useEffect} from 'react';
+import Thumbnail from '../../components/Thumbnail'
+// import {useEffect} from 'react';
 
 const CountryTest = ({shows}) => {
     // console.log('propssss',props.shows)
@@ -7,7 +8,7 @@ const CountryTest = ({shows}) => {
     const renderShows = () => {
         return shows.map((show,index) => {
             return(
-                <li key={index}>{show.show.name}</li>
+                <li key={index}><Thumbnail imageUrl={show.image} caption={show.name} /></li>
             )
         })
     }
