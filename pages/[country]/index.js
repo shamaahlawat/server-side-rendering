@@ -10,7 +10,7 @@ const CountryTest = ({shows,country}) => {
         return shows.map((show,index) => {
             return(
                 <li key={index}><Thumbnail imageUrl={show.image && show.image.medium} caption={show.name}
-                href="/[country]/[showId]"
+                href="/[country]/[show]"
                 as={`/${country}/${show.id}`} /></li>
             )
         })
