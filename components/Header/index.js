@@ -15,7 +15,7 @@ const Header = () => {
 
     console.log('HEADER->ROUTER',router)
     console.log('HEADER->ROUTER',router.query.country)
-    const handleChange = () => {
+    const handleChange = (e) => {
         console.log('selected country: ',e.target.value)
         setSelectedCountry(e.target.value)
         // router.push(`/${e.target.value}`); //but page is going to entirely refresh , try to do it on client side, not from server and refresh it;
@@ -23,7 +23,7 @@ const Header = () => {
     }
     const renderCountries = () => {
         return countries.map(country => {
-            return <option value={country.value}>{country.name}</option>
+            return <option value={country.label}>{country.name}</option>
         })
     }
     return (
