@@ -35,7 +35,7 @@ ShowDetails.getInitialProps = async ({query}) => {
     try{
         console.log('see in terminal console',query)
         const { show } = query;
-        const response = await axios.get(`http://api.tvmaze.com/shows/1?embed=cast`)
+        const response = await axios.get(`https://api.tvmaze.com/shows/1?embed=cast`)
     //    const response = await axios.get(`http://api.tvmaze.com/shows/${show}?embed=cast`)
        console.log('response',response)
        return {
