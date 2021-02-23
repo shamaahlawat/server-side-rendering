@@ -30,7 +30,7 @@ const Header = () => {
 
     useEffect(() => {
         //cookies
-           cookies.set(null,'defaultCountry',{
+           cookies.set(null,'defaultCountry',selectedCountry ,{
                maxAge:30 * 24 * 60 * 60,
                path:'/'
            })
