@@ -2,6 +2,7 @@ import axios from 'axios';
 import Thumbnail from '../../components/Thumbnail'
 // import {useEffect} from 'react';
 import Link from 'next/link'
+import cookies from 'nookies';
 
 const CountryTest = ({shows,country}) => {
     // console.log('propssss',props.shows)
@@ -32,7 +33,8 @@ return (
 
 CountryTest.getInitialProps = async (context) => { //its happening on server side
     console.log('context ==> ',context)
-    const country = context.query.country || 'us'
+    const {defaultCountry} = cookies.get(context)
+    const country = context.query.country || defaultCountry || 'us'
     const response = await axios.get(`https://api.tvmaze.com/schedule?country=${country}&date=2014-12-01`)
     // .then(response => console.log(response.data))
     return {

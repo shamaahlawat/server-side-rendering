@@ -2,6 +2,7 @@
 // import styles from '../styles/Home.module.css'
 import axios from 'axios';
 import Router from 'next/router';
+import cookies from 'nookies';
 
 export default function Home() {
   return (
@@ -12,7 +13,10 @@ export default function Home() {
 }
 
 Home.getInitialProps = (context) => {
-  const country = context.query.country || 'us';
+  const {defaultCountry} = cookies.get(context);
+  // const country = context.query.country || 'us';
+  const country = context.query.country || defaultCountry || 'us';
+  defaultCountry
   console.log('browser',process.browser)
   process.browser ? //if for client side and else for server side(like refresh)
    Router.replace('/[country]',`${country}`) : context.res.writeHead(302,{Location:`/${country}`});
